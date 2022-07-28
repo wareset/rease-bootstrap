@@ -4,7 +4,7 @@ import { TypeReaseContext, TypeReaseProp } from 'rease'
 import type { Optional } from 'utility-types'
 
 import { random_string } from '../lib'
-import { VARIANTS_LIST } from '../../classnames/lib'
+import { VARIANTS_LIST, DARK_AND_LIGHT_LIST } from '../../classnames/lib'
 
 export function Button(
   this: TypeReaseContext,
@@ -28,7 +28,7 @@ export function Button(
 
     ...attrs
   } : {
-    variant?: TypeReaseProp<typeof VARIANTS_LIST[number]>
+    variant?: TypeReaseProp<'link' | typeof VARIANTS_LIST[number] | typeof DARK_AND_LIGHT_LIST[number]>
     
     tag?: TypeReaseProp<keyof HTMLElementTagNameMap>
     type? : TypeReaseProp<'button' | 'submit' | 'reset'>
