@@ -1,8 +1,8 @@
 import 'rease/jsx'
-import { TypeReaseContext, TypeReaseProp, ReaseStore, TypeEventListener } from 'rease'
+import { TypeReaseContext, TypeReaseProp, ReaseSubject, TypeEventListener } from 'rease'
 import {
-  store, onDestroy,
-  subscribe, storablefySafeAll
+  subject, onDestroy,
+  subscribe, subscribeSafeAll
 } from 'rease'
 
 import { random_string, getHighComponent, onewayBindPropSafe, reflow, noop } from '../lib'
@@ -24,7 +24,7 @@ export function Accordion(
   } & Optional<HTMLDivElement>
 ): void {
   this.pub.alwaysOpen$$ = alwaysOpen
-  this.pub.items = {} as { [key: string]: ReaseStore<boolean> }
+  this.pub.items = {} as { [key: string]: ReaseSubject<boolean> }
 
   ;(
     <div
@@ -52,15 +52,15 @@ export function AccordionItem(
 ): void {
   const highAccordion = getHighComponent(this, Accordion)
   const alwaysOpen$$ = highAccordion.pub.alwaysOpen$$
-  const items = highAccordion.pub.items as { [key: string]: ReaseStore<boolean> }
+  const items = highAccordion.pub.items as { [key: string]: ReaseSubject<boolean> }
 
   this.pub.headingId = random_string()
   const id = this.pub.collapseId = random_string()
-  const show$ = items[id] = this.pub.show$ = store<boolean>(false)
+  const show$ = items[id] = this.pub.show$ = subject<boolean>(false)
   onDestroy(() => { delete items[id] })
   onewayBindPropSafe(show, show$)
 
-  subscribe(storablefySafeAll([show$, alwaysOpen$$]),
+  subscribeSafeAll([show$, alwaysOpen$$],
     ([show, alwaysOpen], [items, id]) => {
       if (!alwaysOpen && show) {
         for (const k in items) if (k !== id && items[k].$) items[k].$ = false
@@ -96,7 +96,7 @@ export function AccordionHeader(
   }
 ): void {
   const highAccordionItem = getHighComponent(this, AccordionItem)
-  const show$ = this.pub.show$ = highAccordionItem.pub.show$ as ReaseStore<boolean>
+  const show$ = this.pub.show$ = highAccordionItem.pub.show$ as ReaseSubject<boolean>
 
   ;(
     <h4 r-is={tag!!}
@@ -130,7 +130,7 @@ export function AccordionBody(
   const highAccordionItem = getHighComponent(this, AccordionItem)
 
   const showC: [boolean] = [false]
-  const show$ = highAccordionItem.pub.show$ as ReaseStore<boolean>
+  const show$ = highAccordionItem.pub.show$ as ReaseSubject<boolean>
   
   subscribe(show$, (show, [ctx, showC, completeC]) => {
     const node = ctx.pub.node as HTMLElement

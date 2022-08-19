@@ -1,6 +1,6 @@
 {
   "name": "rease-bootstrap",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "wip",
   "keywords": [
     "rease",
@@ -25,7 +25,7 @@
     "components"
   ],
   "peerDependencies": {
-    "rease": "^0.1.0"
+    "rease": "^0.2.0"
   },
   "dependencies": {
     "utility-types": "3.10.0"

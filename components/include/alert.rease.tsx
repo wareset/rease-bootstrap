@@ -1,6 +1,6 @@
 import 'rease/jsx'
 import { TypeReaseContext, TypeReaseProp } from 'rease'
-import { store, onDestroy } from 'rease'
+import { subject, onDestroy } from 'rease'
 
 // import { ButtonClose } from '../components/Button.rease'
 
@@ -69,12 +69,12 @@ export function Alert(
     [key: string]: any
   }
 ): void {
-  const show$ = store<boolean>(false)
+  const show$ = subject<boolean>(false)
   onewayBindPropSafe(show, show$)
 
   ;(
     <r-if r-is={show$!!} r-children={(): void => {
-      const showFade$ = store<boolean>(false)
+      const showFade$ = subject<boolean>(false)
       setTimeout(() => { showFade$.$ = true }, 25)
 
       const onClose = (): void => {
@@ -103,13 +103,14 @@ export function Alert(
           </r-if>
           <r-watch r-is={timer!!} r-children={(timer: number): void => {
             (<r-if r-is={timer > 0} r-children={(): void => {
-              const timer$ = store(timer)
+              const timer$ = subject(timer)
+              const clearCSI = (): void => { clearInterval(csi) }
+              
               const csi = setInterval(() => {
                 if (timer$.$ > 0) timer$.$ -= 0.25
                 else clearCSI(), onClose()
               }, 250)
 
-              const clearCSI = (): void => { clearInterval(csi) }
               onDestroy(clearCSI)
                 
               ;(<div
