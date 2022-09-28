@@ -1,4 +1,4 @@
-import { TypeReaseContext, TypeUnsubscriber, ReaseSubject } from 'rease'
+import { TypeReaseContext, TypeUnsubscriber, TypeReaseSubject } from 'rease'
 import { subscribeSafe } from 'rease'
 
 export const { random } = Math
@@ -18,7 +18,7 @@ export const getHighComponent = (ctx: TypeReaseContext, Cmp: Function): TypeReas
 }
 
 export const onewayBindPropSafe = (
-  prop$$: any, store$: ReaseSubject<any>
+  prop$$: any, store$: TypeReaseSubject<any>
 ): TypeUnsubscriber =>
   subscribeSafe(prop$$, (v, [store$]) => { store$.$ = v }, [store$])
 

@@ -1,5 +1,5 @@
 import 'rease/jsx'
-import { TypeReaseContext, TypeReaseProp, ReaseSubject, TypeEventListener } from 'rease'
+import { TypeReaseContext, TypeReaseProp, TypeReaseSubject, TypeEventListener } from 'rease'
 import {
   subject, onDestroy,
   subscribe, subscribeSafeAll
@@ -24,7 +24,7 @@ export function Accordion(
   } & Optional<HTMLDivElement>
 ): void {
   this.pub.alwaysOpen$$ = alwaysOpen
-  this.pub.items = {} as { [key: string]: ReaseSubject<boolean> }
+  this.pub.items = {} as { [key: string]: TypeReaseSubject<boolean> }
 
   ;(
     <div
@@ -52,7 +52,7 @@ export function AccordionItem(
 ): void {
   const highAccordion = getHighComponent(this, Accordion)
   const alwaysOpen$$ = highAccordion.pub.alwaysOpen$$
-  const items = highAccordion.pub.items as { [key: string]: ReaseSubject<boolean> }
+  const items = highAccordion.pub.items as { [key: string]: TypeReaseSubject<boolean> }
 
   this.pub.headingId = random_string()
   const id = this.pub.collapseId = random_string()
@@ -96,7 +96,7 @@ export function AccordionHeader(
   }
 ): void {
   const highAccordionItem = getHighComponent(this, AccordionItem)
-  const show$ = this.pub.show$ = highAccordionItem.pub.show$ as ReaseSubject<boolean>
+  const show$ = this.pub.show$ = highAccordionItem.pub.show$ as TypeReaseSubject<boolean>
 
   ;(
     <h4 r-is={tag!!}
@@ -130,7 +130,7 @@ export function AccordionBody(
   const highAccordionItem = getHighComponent(this, AccordionItem)
 
   const showC: [boolean] = [false]
-  const show$ = highAccordionItem.pub.show$ as ReaseSubject<boolean>
+  const show$ = highAccordionItem.pub.show$ as TypeReaseSubject<boolean>
   
   subscribe(show$, (show, [ctx, showC, completeC]) => {
     const node = ctx.pub.node as HTMLElement

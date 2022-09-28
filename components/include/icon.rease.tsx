@@ -10,7 +10,7 @@ export function Icon(
 
     ...attrs
   } : {
-    name: TypeReaseProp<TypeIconName>
+    name: TypeIconName | TypeReaseProp<string>
 
     class?: TypeReaseProp<string>
 
