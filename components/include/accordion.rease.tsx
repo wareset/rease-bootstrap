@@ -106,7 +106,7 @@ export function AccordionHeader(
     >
       <button
         class={[attrs.class!!, 'accordion-button']}
-        class--collapsed={!show$!!}
+        class-collapsed={!show$!!}
         type="button"
         aria-expanded={show$!!}
         aria-controls={highAccordionItem.pub.collapseId as string}

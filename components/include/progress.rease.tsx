@@ -58,7 +58,7 @@ export function ProgressBar(
     ]}
     
     aria-valuenow={now!!}
-    style--width={`${now!!}%`}
+    style-width={`${now!!}%`}
 
     r-use={this.use}
   >

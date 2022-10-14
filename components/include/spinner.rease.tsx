@@ -35,8 +35,8 @@ export function Spinner(
       `text-${variant!!}`,
       small!! && `spinner-${grow!! ? 'grow' : 'border'}-sm`
     ]}
-    style--width={+size!! ? `${+size!!}rem` : null}
-    style--height={+size!! ? `${+size!!}rem` : null}
+    style-width={+size!! ? `${+size!!}rem` : null}
+    style-height={+size!! ? `${+size!!}rem` : null}
 
     r-use={this.use}
   >

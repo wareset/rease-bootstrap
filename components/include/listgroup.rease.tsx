@@ -77,8 +77,8 @@ export function ListGroupItem(
       variant!! && `list-group-item-${variant!!}`,
       action!! && 'list-group-item-action'
     ]}
-    class--active={active!!}
-    class--disabled={disabled!!}
+    class-active={active!!}
+    class-disabled={disabled!!}
     
     aria-disabled={disabled!!}
 

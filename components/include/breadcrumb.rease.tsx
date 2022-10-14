@@ -17,7 +17,7 @@ export function Breadcrumb(
 ): void {
   <nav
     aria-label={ariaLabel!! || 'breadcrumb'}
-    style----bs-breadcrumb-divider={divider!! || '/'}
+    style---bs-breadcrumb-divider={divider!! || '/'}
   >
     <ol
       {...attrs}
@@ -46,7 +46,7 @@ export function BreadcrumbItem(
 ): void {
   <li
     class={'breadcrumb-item'}
-    class--active={active!!}
+    class-active={active!!}
   >
     <span r-is={attrs.href!! && 'a'}
       {...attrs}

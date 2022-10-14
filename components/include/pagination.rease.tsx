@@ -58,8 +58,8 @@ export function PaginationItem(
 ): void {
   <li
     class={'page-item'}
-    class--active={active!!}
-    class--disabled={disabled!!}
+    class-active={active!!}
+    class-disabled={disabled!!}
     aria-disabled={disabled!!}
 
     r-use={this.use}

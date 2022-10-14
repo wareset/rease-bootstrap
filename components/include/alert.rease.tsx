@@ -90,7 +90,7 @@ export function Alert(
             `alert alert-${variant!!} fade position-relative`,
             dismissible!! && 'alert-dismissible'
           ]}
-          class--show={showFade$!!}
+          class-show={showFade$!!}
           r-use={this.use}
         >
           <r-slot/>
@@ -121,7 +121,7 @@ export function Alert(
                   role="progressbar"
                   aria-valuemin="0" aria-valuemax={timer} aria-valuenow={timer$!!}
                   class={`progress-bar bg-${variant!!}`}
-                  style--width={`${timer$!! / timer * 100}%`}
+                  style-width={`${timer$!! / timer * 100}%`}
                 />
               </div>)
             }}/>)

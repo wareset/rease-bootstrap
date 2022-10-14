@@ -58,8 +58,8 @@ export function Button(
       (pill!! || squared!!) && 'rounded-' + (pill!! ? 'pill' : '0'),
       (small!! || large!!) && `btn-${small!! ? 'sm' : 'lg'}`
     ]}
-    class--disabled={disabled!!}
-    class--active={active!!}
+    class-disabled={disabled!!}
+    class-active={active!!}
 
     aria-disabled={disabled!!}
     disabled={disabled!!}
@@ -93,7 +93,7 @@ export function ButtonClose(
       'btn-close',
       white!! && 'btn-close-white'
     ]}
-    class--disabled={disabled!!}
+    class-disabled={disabled!!}
     aria-disabled={disabled!!}
     disabled={disabled!!}
     r-use={this.use}

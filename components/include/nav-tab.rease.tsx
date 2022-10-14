@@ -75,8 +75,8 @@ export function NavItem(
         'nav-link',
         dropdown!! && 'dropdown-toggle'
       ]}
-      class--active={active!!}
-      class--disabled={disabled!!}
+      class-active={active!!}
+      class-disabled={disabled!!}
 
       aria-expanded={dropdown!!}
       // id="dropdownMenuButton1"
